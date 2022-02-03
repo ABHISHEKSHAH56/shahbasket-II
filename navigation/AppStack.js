@@ -20,6 +20,7 @@ import Newcart from '../screens/Cart/Newcart';
 import Checkout from '../screens/Cart/Checkout';
 import Checkout21 from '../screens/Cart/Checkout21';
 import UserInfo from '../screens/AuthScreen/UserInfo';
+import Payment from '../screens/Payment/Payment';
 
 const HomeStack = createNativeStackNavigator();
 
@@ -73,6 +74,7 @@ export default function AppStack() {
       <HomeStack.Screen name="OrderTrack" component={Deliverypage} />
       <HomeStack.Screen name="Payment" component={Checkout21} />
       <HomeStack.Screen name="Cart" component={Newcart} />
+      <HomeStack.Screen name="paytmpayment" component={Payment} />
       <HomeStack.Screen name="searchScreen" component={Search} />
       <HomeStack.Screen name="Mobile" component={MobileAuthenticationScreen} />
       <HomeStack.Screen name="OtpVerify" component={OtpScreen} />

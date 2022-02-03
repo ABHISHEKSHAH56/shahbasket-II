@@ -162,7 +162,7 @@ export default function ProductCard3({data}) {
           alignItems: 'center',
         }}>
         <Image
-          source={{uri:`https://shahbasket.herokuapp.com/${data.image}`}}
+          source={{uri:data.image}}
           resizeMode="contain"
           style={{height: 80, width: 80, alignSelf: 'center'}}
         />

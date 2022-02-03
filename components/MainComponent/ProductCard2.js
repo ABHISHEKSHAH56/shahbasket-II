@@ -109,7 +109,7 @@ export default function ProductCard2({data}) {
           marginVertical: 5,
         }}>
         <Image
-          source={{uri:`https://shahbasket.herokuapp.com/${data.image}`}}
+          source={{uri:data.image}}
           resizeMode="contain"
           style={{height: 80, width: 80, alignSelf: 'center'}}
         />

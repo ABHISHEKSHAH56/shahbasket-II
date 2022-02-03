@@ -5,11 +5,11 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export default function Payment() {
     const orderDetails={
-        orderId:'order7',
-        mid:'JIGVpN02586262607515',
-        tranxToken:'97bee10c8e104fbb802bd80665606b5c1633820546553',
+        orderId:'order89',
+        mid:'ndUPBC45334640494343',
+        tranxToken:'0a1fea026188466a91980cdfddb73bb41639257613816',
         amount:'1.00',
-        callbackUrl:'https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID=order7',
+        callbackUrl:'https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID=order89',
         isStaging:true,
         appInvokeRestricted:true,
     }

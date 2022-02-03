@@ -117,7 +117,7 @@ export default function ProductCard1({item}) {
 
                             <View style={{alignSelf:'center'}} >
                                 <View style={{backgroundColor:COLORS.lightGray2,width:120,alignItems:'center',borderRadius:10}}>
-                                <Image source={item.image}   style={{height:80,width:100}} />
+                                <Image source={{uri:item.image}}   style={{height:80,width:100}} />
                                 </View>
                                 
 

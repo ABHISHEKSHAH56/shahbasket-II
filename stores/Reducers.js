@@ -5,7 +5,8 @@ const initialState = {
         userData: null,
         otpsate:null,
         accessToken:null,
-        loader:true
+        loader:true,
+        orderinitate:null
 
 
 
@@ -49,6 +50,14 @@ const tabReducer = (state = initialState, action) => {
                         }
 
                 }
+                case 'ORDERPLACE':{
+                        return{
+                                ...state,
+                                orderinitate:action.payload
+                        }
+
+                }
+
                
 
                 default: return state

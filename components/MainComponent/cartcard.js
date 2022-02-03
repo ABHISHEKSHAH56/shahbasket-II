@@ -95,7 +95,7 @@ export default function CartCard({data}) {
           
         }}>
         <Image
-          source={{uri:`https://shahbasket.herokuapp.com/${data.image}`}}
+          source={{uri:data.image}}
           resizeMode="contain"
           style={{height: 40, width: 40, alignSelf: 'center',padding:5 }}
         />

@@ -129,9 +129,9 @@ export default function NewHome({navigation}) {
                                             marginBottom:5,
                                             marginHorizontal:10                                      
                                             }}>
-                                                <TouchableWithoutFeedback onPress={() => navigation.openDrawer()}>
-                                                <Icon name="menu" size={24 } color={COLORS.gray} />
-                                                </TouchableWithoutFeedback>                                        
+                                                <TouchableOpacity onPress={() => navigation.openDrawer()}>
+                                                         <Logocomponment />
+                                                </TouchableOpacity>                                        
                                                 <TouchableOpacity>
                                                 <Image source={require('../../assets/categorey/user.png')} style={{
                                                     height:50,
@@ -143,7 +143,7 @@ export default function NewHome({navigation}) {
                                                 </TouchableOpacity>                 
                                         </View>
                                     </SafeAreaView>
-                                    <Logocomponment />
+                                  
                             
                                     <SearchComponment  onPress={()=>navigation.navigate('searchScreen',{focus:true})} />
                                     <Showmore onPress={()=>{}} label="Show More" heading="Shop By Categorey" />

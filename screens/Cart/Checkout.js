@@ -1,16 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, TouchableWithoutFeedback, SafeAreaView, Image, TouchableOpacity, ScrollView } from 'react-native'
+import AnimatedLoader from 'react-native-animated-loader'
 import Icon from 'react-native-vector-icons/Feather'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { OrderInitate } from '../../API/Index'
 import { COLORS, FONTS, icons, SIZES } from '../../constants'
 
 export default function Checkout({navigation}) {
+   
     const cart = useSelector(state => state.shop.cart)
-    const destination = useSelector(state => state.address.destination)
+    const user = useSelector(state => state.address.userData)
+    const destination = useSelector(state => state.address)
     const subtotal = cart.reduce((a, c) => a + c.qty*c.basePrice, 0) 
     const tax = 0
     const deliverycharge = subtotal> 300 ? 0 : 50
     const grandTotal = subtotal + deliverycharge + tax
+    const dispatch=useDispatch()
+    const onconfirm=()=>{
+       
+        const itempro={
+            product:cart,
+            charges:{
+                itemTotal:subtotal,
+                tax:tax,
+                delivery:deliverycharge,
+                total:grandTotal
+            },
+            paymentoption:"COD",
+            address:destination,
+            userDetails:user
+        }        
+        dispatch({
+            type: 'ORDERPLACE',
+            payload: itempro,
+        })
+        navigation.navigate('Payment')
+    }
     return (
         <View style={{backgroundColor:'#fff',flex:1}}>
            <SafeAreaView>
@@ -49,7 +74,7 @@ export default function Checkout({navigation}) {
               
            </View>
            {/* details */}
-
+           
           
                <View style={{height:SIZES.height-200,backgroundColor:'#EAEFF5',marginHorizontal:10}}>
                    <ScrollView showsVerticalScrollIndicator={false}>
@@ -83,7 +108,7 @@ export default function Checkout({navigation}) {
                                     
                                 }}>
                                     <View style={{paddingHorizontal:15,paddingTop:15}}>
-                                     <Text style={{overflow:'hidden',color:COLORS.black,fontSize:14}} >{destination.description}</Text>
+                                     <Text style={{overflow:'hidden',color:COLORS.black,fontSize:14}} >{destination.destination.description}</Text>
                                     </View>
 
                                     <View style={{flexDirection:'row',justifyContent:'flex-end',paddingRight:10}}>
@@ -185,7 +210,7 @@ export default function Checkout({navigation}) {
                     <Text style={{fontWeight:'bold',marginHorizontal:10,fontSize:16}}>Total:</Text>
                     <Text >Rs {grandTotal.toFixed(2)}</Text>
                 </View>
-                <TouchableOpacity onPress={()=>navigation.navigate('Payment')} style={{backgroundColor:COLORS.blue,flexDirection:"row",justifyContent:'center',borderRadius:10,width:120,height:40,alignItems:'center'}}>
+                <TouchableOpacity onPress={onconfirm} style={{backgroundColor:COLORS.blue,flexDirection:"row",justifyContent:'center',borderRadius:10,width:120,height:40,alignItems:'center'}}>
                     <Text style={{color:COLORS.white,fontWeight:'bold',marginRight:4}}>CONFIRM</Text>
                     <Image source={icons.check_circle} style={{height:20,width:20,tintColor:COLORS.white}}/>
                 </TouchableOpacity>
